@@ -1,4 +1,6 @@
 {
+  "xsappname": "datasphere-api-access-xsuaa",
+  "tenant-mode": "dedicated",
   "scopes": [],
   "attributes": [],
   "role-templates": [],

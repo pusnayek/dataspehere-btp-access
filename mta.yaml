@@ -25,8 +25,7 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: dwc-api-auth
-      - name: cups-datasphere-access
+      - name: datasphere-api-access-xsuaa
 
   - name: dwc-api
     type: approuter.nodejs
@@ -42,21 +41,15 @@ modules:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
           forwardAuthToken: true
-      - name: dwc-api-auth
+      - name: datasphere-api-access-xsuaa
 
 resources:
-  - name: dwc-api-auth
+  - name: datasphere-api-access-xsuaa
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: dwc-api-${org}-${space}
+        xsappname: datasphere-api-access-xsuaa
         tenant-mode: dedicated
-  - name: cups-datasphere-access
-    type: org.cloudfoundry.existing-service
-    parameters:
-      service-name: cups-datasphere-access
-    properties:
-      the-service-name: '${service-name}'

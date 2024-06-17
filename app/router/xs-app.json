@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "app/index.html",
+  "welcomeFile": "/odata/v4/data/$metadata",
   "routes": [
     {
       "source": "^/app/(.*)$",
