@@ -1,0 +1,62 @@
+_schema-version: '3.1'
+ID: dwc-api
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: dwc-api-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      readiness-health-check-type: http
+      readiness-health-check-http-endpoint: /health
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: dwc-api-auth
+      - name: cups-datasphere-access
+
+  - name: dwc-api
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: dwc-api-auth
+
+resources:
+  - name: dwc-api-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: dwc-api-${org}-${space}
+        tenant-mode: dedicated
+  - name: cups-datasphere-access
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: cups-datasphere-access
+    properties:
+      the-service-name: '${service-name}'
