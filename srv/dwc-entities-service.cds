@@ -1,4 +1,4 @@
-using dwc.entities as my from '../db/dataprov.cds';
+using dwc.entities as entities from '../db/dataprov.cds';
 
 service DataService {
 
@@ -6,5 +6,5 @@ service DataService {
 
     function connect() returns String;
 
-	@readonly entity EmployeeData as projection on my.EmployeeData;
+	entity EmployeeData as projection on entities.EMPLOYEEDATA;
 }

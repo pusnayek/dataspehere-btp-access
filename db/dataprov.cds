@@ -1,7 +1,11 @@
 namespace dwc.entities;
 
 @cds.persistence.exists
-entity EmployeeData {
-    key employeeId : String;
-        name : String;
+entity EMPLOYEEDATA {
+    key EMPLOYEEID  : String;
+        FIRSTNAME   : String;
+        LASTNAME    : String;
+        JOBID       : String;
+        JOBLOCATION : String;
+        TELEPHONE   : String;
 }
