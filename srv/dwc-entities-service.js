@@ -49,7 +49,7 @@ class DataService extends cds.ApplicationService { init() {
   })
 
   this.on('CREATE', EmployeeData, async (req) => {
-    return await create(req.data)
+    return req.data
   })
 
   const read = async function() {
