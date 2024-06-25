@@ -1,5 +1,6 @@
 {
   "welcomeFile": "/odata/v4/data/$metadata",
+  "authenticationMethod": "route",
   "routes": [
     {
       "source": "^/(.*)$",

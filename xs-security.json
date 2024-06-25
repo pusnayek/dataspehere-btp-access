@@ -5,6 +5,10 @@
   "attributes": [],
   "role-templates": [],
   "oauth2-configuration": {
+    "grant-types": [
+      "password",
+      "authorization_code"
+    ],    
     "credential-types": [
       "binding-secret",
       "x509"

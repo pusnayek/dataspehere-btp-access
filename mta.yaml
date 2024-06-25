@@ -53,3 +53,7 @@ resources:
       config:
         xsappname: datasphere-api-access-xsuaa
         tenant-mode: dedicated
+        oauth2-configuration:
+          grant-types:
+            - password
+            - authorization_code        

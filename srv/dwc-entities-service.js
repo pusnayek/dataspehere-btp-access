@@ -49,6 +49,8 @@ class DataService extends cds.ApplicationService { init() {
   })
 
   this.on('CREATE', EmployeeData, async (req) => {
+    var data = await create(req.data)
+    LOG.info(data)
     return req.data
   })
 
@@ -74,7 +76,7 @@ class DataService extends cds.ApplicationService { init() {
               reject(err)
             }
             // console.log('Rows:', records)
-            LOG.info(records)
+            // LOG.info(records)
             conn.disconnect();
             resolve(records)
           })
@@ -98,7 +100,10 @@ class DataService extends cds.ApplicationService { init() {
           LOG.error(err)
           reject(err)
         }
-        conn.exec('SELECT * FROM "SANDBOX_002#CAP"."EMPLOYEEDATA"', [], function (err, records) {
+        var sql = "INSERT INTO \"SANDBOX_002#CAP\".\"EMPLOYEEDATA\" VALUES('" + data.EMPLOYEEID + "', '" + data.FIRSTNAME + "', '" +  
+                data.LASTNAME + "', '" + data.JOBID + "', '" + data.JOBLOCATION + "', '" + data.TELEPHONE + "')";
+        LOG.info(sql)
+        conn.exec(sql, [], function (err, records) {
             if (err) {
               LOG.error(err)
               reject(err)
