@@ -26,6 +26,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: datasphere-api-access-xsuaa
+      - name: destination-service
 
   - name: dwc-api
     type: approuter.nodejs
@@ -57,3 +58,8 @@ resources:
           grant-types:
             - password
             - authorization_code        
+  - name: destination-service
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
