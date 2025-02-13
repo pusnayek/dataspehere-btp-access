@@ -27,6 +27,7 @@ modules:
     requires:
       - name: datasphere-api-access-xsuaa
       - name: destination-service
+      - name: dwc-api-db
 
   - name: dwc-api
     type: approuter.nodejs
@@ -43,6 +44,20 @@ modules:
           url: ~{srv-url}
           forwardAuthToken: true
       - name: datasphere-api-access-xsuaa
+      - name: destination-service
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
+  - name: dwc-api-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: dwc-api-db
 
 resources:
   - name: datasphere-api-access-xsuaa
@@ -57,9 +72,14 @@ resources:
         oauth2-configuration:
           grant-types:
             - password
-            - authorization_code        
+            - authorization_code
   - name: destination-service
     parameters:
       service-plan: lite
       service: destination
     type: org.cloudfoundry.managed-service
+  - name: dwc-api-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
