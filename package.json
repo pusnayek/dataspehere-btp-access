@@ -6,14 +6,15 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/hana": "^1",
     "@sap-cloud-sdk/http-client": "^3.26.0",
-    "@sap/cds": "^7",
+    "@sap/cds": "^8.2",
     "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.23.27",
     "@sap/xsenv": "^5.1.0",
     "@sap/xssec": "^3",
     "cfenv": "^1.2.4",
-    "express": "^4",
-    "@cap-js/hana": "^1"
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -51,20 +52,6 @@
         "[hybrid]": {
           "credentials": {
             "destination": "NorthWind"
-          }
-        }
-      },
-      "R_GV001_DMF": {
-        "kind": "odata",
-        "model": "srv/external/R_GV001_DMF",
-        "[backend]": {
-          "credentials": {
-            "url": "https://ibm-q.us10.hcs.cloud.sap/api/v1/dwc/consumption/relational/RPT_RASRV_001/R_GV001_DMF/$metadata"
-          }
-        },
-        "[hybrid]": {
-          "credentials": {
-            "destination": "DATASPHERE-DEV-API"
           }
         }
       }
