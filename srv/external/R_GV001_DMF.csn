@@ -1,0 +1,197 @@
+{
+ "meta": {
+  "creator": "cds-dk 8.7.3"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "R_GV001_DMF.R_GV001_DMF": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "Employee_ID": {
+     "key": true,
+     "type": "cds.Integer64",
+     "notNull": true,
+     "@Common.Label": "personId",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    },
+    "Legal_Name_First_Name": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "First Name"
+    },
+    "Legal_Name_Last_Name": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Last Name"
+    },
+    "Legal_Name_Salutation": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Preferred Salutation"
+    },
+    "Legal_Name_Title": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Title"
+    },
+    "Legal_Name_Prefix": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Family Name Prefix"
+    },
+    "Legal_Name_Suffix": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Suffix"
+    },
+    "Date_of_Birth": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Date Of Birth"
+    },
+    "Custom_ID_Home_CNUM_Host_CNUM": {
+     "type": "cds.String",
+     "length": 128,
+     "@Analytics.dimension": true,
+     "@Common.Label": "Talent ID"
+    },
+    "Company": {
+     "type": "cds.String",
+     "length": 32,
+     "@Common.Label": "Legal Entity"
+    },
+    "Cost_Center": {
+     "type": "cds.String",
+     "length": 32,
+     "@Common.Label": "Cost Center"
+    },
+    "Department_Code": {
+     "type": "cds.String",
+     "length": 32,
+     "@Common.Label": "Department"
+    },
+    "Organisation_WPI": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Work Place Indicator"
+    },
+    "Email_Primary_Work": {
+     "type": "cds.String",
+     "length": 100,
+     "@Common.Label": "Primary Email Address"
+    },
+    "Time_Type": {
+     "type": "cds.String",
+     "length": 9,
+     "@Common.Label": "Fulltime/Parttime"
+    },
+    "Separation_Date": {
+     "key": true,
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "notNull": true,
+     "@Common.Label": "Separation Date",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    },
+    "CF_Disability_Status": {
+     "type": "cds.String",
+     "length": 256,
+     "@Analytics.dimension": true,
+     "@Common.Label": "PwD"
+    },
+    "CF_AddLine1_StreetNo": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Street"
+    },
+    "Primary_Home_Address_Postal_Code": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "zipCode"
+    },
+    "Primary_Home_Address_Country": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "country"
+    },
+    "Primary_Home_Address_City": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "City"
+    },
+    "Worker_Emergency_Contact_Given_Name": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Emergency Contact Given Name"
+    },
+    "Worker_Emergency_Contact_First_Name": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Emergency Contact First Name"
+    },
+    "Worker_Emergency_Contact_Last_Name": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Emerg Contact Last Name"
+    },
+    "Worker_Emergency_Contact_Tel_Phone": {
+     "type": "cds.String",
+     "length": 256,
+     "@Common.Label": "Emerg Contact Tel Phone"
+    },
+    "Worker_Emergency_Contact_Relation": {
+     "key": true,
+     "type": "cds.String",
+     "length": 50,
+     "notNull": true,
+     "@Common.Label": "Emerg Contact Relationship",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    },
+    "Phone_Number_Primary_Home": {
+     "type": "cds.String",
+     "length": 133,
+     "@Common.Label": "Primary Phone Number with Country Code"
+    },
+    "Worker_Phone_Number_with_Country_Code": {
+     "type": "cds.String",
+     "length": 133,
+     "@Common.Label": "Addl Phone Number with Country Code"
+    },
+    "Worker_LRV_Phone_Type": {
+     "key": true,
+     "type": "cds.String",
+     "length": 100,
+     "notNull": true,
+     "@Common.Label": "Phone Type",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    }
+   },
+   "@Common.Label": "R_GV001_DMF",
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "R_GV001_DMF": {
+   "kind": "service",
+   "@cds.external": true
+  }
+ }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "dwc-api",
+  "name": "dataspehere-api",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -10,7 +10,6 @@
     "@sap-cloud-sdk/http-client": "^3.26.0",
     "@sap/cds": "^8.2",
     "@sap/cds-hana": "^2",
-    "@sap/hana-client": "^2.23.27",
     "@sap/xsenv": "^5.1.0",
     "@sap/xssec": "^3",
     "cfenv": "^1.2.4",
@@ -24,7 +23,7 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "deploy": "cf deploy mta_archives/dwc-api_1.0.0.mtar --retries 1",
+    "deploy": "cf deploy mta_archives/dataspehere-api_1.0.0.mtar --retries 1",
     "approuter-local": "cds bind --exec -- npm start --prefix app/router",
     "watch-hybrid": "cds watch --profile hybrid"
   },
@@ -36,24 +35,9 @@
         }
       },
       "db": "hana",
-      "Northwind": {
+      "R_GV001_DMF": {
         "kind": "odata",
-        "model": "srv/external/Northwind",
-        "[backend]": {
-          "credentials": {
-            "url": "https://services.odata.org/Experimental/OData/OData.svc"
-          }
-        },
-        "[production]": {
-          "credentials": {
-            "destination": "NorthWind"
-          }
-        },
-        "[hybrid]": {
-          "credentials": {
-            "destination": "NorthWind"
-          }
-        }
+        "model": "srv/external/R_GV001_DMF"
       }
     },
     "sql": {

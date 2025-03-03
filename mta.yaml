@@ -1,9 +1,9 @@
 _schema-version: "3.1"
-ID: dwc-api
+ID: dataspehere-api
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: dwc-api-srv
+- name: dataspehere-api-srv
   type: nodejs
   path: gen/srv
   requires:
@@ -19,7 +19,7 @@ modules:
     readiness-health-check-type: http
   build-parameters:
     builder: npm
-- name: dwc-api
+- name: dataspehere-api
   type: approuter.nodejs
   path: app/router
   requires:
@@ -40,6 +40,7 @@ modules:
     disk-quota: 256M
     keep-existing-routes: true
     memory: 256M
+
 resources:
 - name: datasphere-api-access-xsuaa
   type: org.cloudfoundry.managed-service
@@ -59,6 +60,7 @@ resources:
   parameters:
     service: destination
     service-plan: lite
+
 parameters:
   enable-parallel-deployments: true
 build-parameters:
