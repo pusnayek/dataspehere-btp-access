@@ -40,7 +40,30 @@ modules:
     disk-quota: 256M
     keep-existing-routes: true
     memory: 256M
-
+- name: dataspehere-api-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: dataspehere-api-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - dwcuidwcui.zip
+      name: dwcuidwcui
+      target-path: resources/
+- name: dwcuidwcui
+  type: html5
+  path: app/dwc-ui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: datasphere-api-access-xsuaa
   type: org.cloudfoundry.managed-service
@@ -58,10 +81,27 @@ resources:
 - name: destination-service
   type: org.cloudfoundry.managed-service
   parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
     service: destination
     service-plan: lite
-
+- name: dataspehere-api-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: dataspehere-api-html5-service
+    service-plan: app-host
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:

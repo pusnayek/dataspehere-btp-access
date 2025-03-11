@@ -8,7 +8,8 @@ const LOG = cds.log('dwcapi')
 class DataService extends cds.ApplicationService { init() {
 
   const { R_GV001_DMF } = this.entities;
-  const datasphereApiConst = JSON.parse(process.env.DATASPHERE_OAUTH_ACCESS);  
+  const datasphereApiConst = {"client_id": "sb-0e256746-3994-4be8-89fe-597752139b9e!b174134|client!b655","client_secret":"bb5050bb-7313-4534-b0ea-55ace15fc2c4$JTuge0q2LS3cgc3ON89fwNDSyn5-toTQzrebFhkSBE8=","auth_refresh_token":"076edb93c4154a358bd05d95be8b7702-r","hostname":"ibm-q.us10.hcs.cloud.sap","authhostname":"ibm-q.authentication.us10.hana.ondemand.com"};  
+  // const datasphereApiConst = JSON.parse(process.env.DATASPHERE_OAUTH_ACCESS);  
   const {client_id, client_secret, auth_refresh_token, hostname, authhostname} = datasphereApiConst
 
   let access_token;
@@ -31,9 +32,20 @@ class DataService extends cds.ApplicationService { init() {
 
   this.on('getGreeting', () => "Hello World" ) 
 
+  this.on('CREATE', R_GV001_DMF, async (req) => {
+    var header = JSON.stringify(req.http.req.header)
+    // console.log(req.http.req.header)
+    console.log('Header'+header)
+  })
+
+
   this.on('READ', R_GV001_DMF, async (req) => {
+    var header = JSON.stringify(req.http.req.header)
+    // console.log(req.http.req.header)
+    console.log('Header'+header)
     var { url } = req.http.req;
-    console.log(url)
+    // console.log(req.http.body)
+    // console.log(req.http.body)
     const apiConfig = {
         hostname: hostname,
         path: '/api/v1/dwc/consumption/relational/RPT_RASRV_001/R_GV001_DMF'.concat(url),
@@ -43,6 +55,7 @@ class DataService extends cds.ApplicationService { init() {
     }
     
     const data = await get(apiConfig);
+    // console.log(JSON.parse(data).value)
     return JSON.parse(data).value;
   })
 

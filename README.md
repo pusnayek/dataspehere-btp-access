@@ -23,3 +23,10 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+
+## Set user environment paramters
+These parameters cannot be used locally with cds watch, but works when deployed. Use following command to set them.
+> cf set-env dataspehere-api-srv DATASPHERE_OAUTH_ACCESS '{"client_id": "sb--","client_secret":"bb--","auth_refresh_token":"000000-r","hostname":"---.cloud.sap","authhostname":"--.authentication.us10.hana.ondemand.com"}'
+> cf restage dataspehere-api-srv
+

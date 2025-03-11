@@ -19,13 +19,18 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^3",
-    "eslint": "^9"
+    "eslint": "^9",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
   },
   "scripts": {
     "start": "cds-serve",
-    "deploy": "cf deploy mta_archives/dataspehere-api_1.0.0.mtar --retries 1",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "approuter-local": "cds bind --exec -- npm start --prefix app/router",
-    "watch-hybrid": "cds watch --profile hybrid"
+    "watch-hybrid": "cds watch --profile hybrid",
+    "watch-dwc-ui": "cds watch --open dwc-ui/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy dataspehere-api --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive"
   },
   "cds": {
     "requires": {
@@ -43,5 +48,8 @@
     "sql": {
       "native_hana_associations": false
     }
-  }
+  },
+  "sapux": [
+    "app/dwc-ui"
+  ]
 }
