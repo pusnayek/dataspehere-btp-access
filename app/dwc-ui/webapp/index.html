@@ -15,7 +15,55 @@
         integrationID: "c2bee8d3-c861-4e1f-ae4f-aee6fb854023", // The ID of this integration.
         region: "au-syd", // The region your integration is hosted in.
         serviceInstanceID: "164cf8c2-982f-4f9b-a0ce-5c29af35ea5a", // The ID of your service instance.
-        onLoad: async (instance) => { await instance.render(); }
+        onLoad: async (instance) => { 
+                await instance.render(); 
+
+                var preReceiveHandler = function(event) {
+                    const message = event.data;
+                    if (message.output.generic) {
+                        message.output.generic.forEach(messageItem => {
+                            if (messageItem.response_type === 'option' && messageItem.options.length > 4) {
+                                messageItem.response_type = 'user_defined';
+                            }
+                        })
+                    }
+                };
+
+
+                var customResponseHandler = function(event) {
+                    const { message, element, fullMessage } = event.data;
+                    const oList = document.createElement('ul');
+                    var result = "";
+                    var items = message.options.forEach((messageItem, index) => {
+                        result += "<li>" + messageItem.label + "</li>";
+                    });
+                    oList.innerHTML = result;
+                    oList.setAttribute("style", "list-style:outside;");
+                    element.appendChild(oList);
+                };
+
+                var preSendHandler = function(event) {
+                    const message = event.data;
+                };
+
+                var sendHandler = function(event) {
+                    const message = event.data;
+                };
+
+                var receiveHandler = function(event) {
+                    const message = event.data;
+                };
+
+                instance.on({ type: 'customResponse', handler: customResponseHandler });
+                instance.on({ type: 'pre:receive', handler: preReceiveHandler });
+                instance.on({ type: 'receive', handler: receiveHandler });
+                instance.on({ type: 'send', handler: sendHandler });
+                instance.on({ type: 'pre:send', handler: preSendHandler });
+
+                
+
+                //instance.send("Hello World!");
+            }
         };
         setTimeout(function(){
         const t=document.createElement('script');
