@@ -1,0 +1,142 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "dwc.ui.dwcui",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:worklist",
+            "version": "1.16.5",
+            "toolsId": "4d2a8db6-7e0a-4d59-9c9c-d1d5f75bdd52"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/data/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.133.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "dwc.ui.dwcui.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "R_GV001_DMFList",
+                    "target": "R_GV001_DMFList"
+                },
+                {
+                    "pattern": "R_GV001_DMF({key}):?query:",
+                    "name": "R_GV001_DMFObjectPage",
+                    "target": "R_GV001_DMFObjectPage"
+                }
+            ],
+            "targets": {
+                "R_GV001_DMFList": {
+                    "type": "Component",
+                    "id": "R_GV001_DMFList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/R_GV001_DMF",
+                            "variantManagement": "Page",
+                            "hideFilterBar": true,
+                            "navigation": {
+                                "R_GV001_DMF": {
+                                    "detail": {
+                                        "route": "R_GV001_DMFObjectPage"
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "ResponsiveTable"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "R_GV001_DMFObjectPage": {
+                    "type": "Component",
+                    "id": "R_GV001_DMFObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/R_GV001_DMF"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

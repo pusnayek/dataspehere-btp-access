@@ -1,0 +1,221 @@
+{
+ "meta": {
+  "creator": "cds-dk 8.7.3"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "IBMSAP_Vendor_Information_View_edmx.IBMSAP_Vendor_Information_View": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "VSOTID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 5000,
+     "notNull": true,
+     "@Common.Label": "VSOTID",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    },
+    "ZGROUPID": {
+     "type": "cds.Integer64",
+     "@Common.Label": "ZGROUPID"
+    },
+    "VSOTGROUP": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "VSOTGROUP"
+    },
+    "VSOTCLASSIFICATION": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "VSOTCLASSIFICATION"
+    },
+    "OPUAREA": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "OPUAREA"
+    },
+    "OPUSUBAREA": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "OPUSUBAREA"
+    },
+    "ACTIVEFLAG": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "ACTIVEFLAG"
+    },
+    "UPDATED_ON": {
+     "type": "cds.Date",
+     "@Common.Label": "UPDATED_ON"
+    },
+    "UPDATED_BY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "UPDATED_BY"
+    },
+    "TEAMLEAD": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "TEAMLEAD"
+    },
+    "OPSLEAD": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "OPSLEAD"
+    },
+    "QUALITY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "QUALITY"
+    },
+    "SUPPLYCHAIN": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "SUPPLYCHAIN"
+    },
+    "GT_E": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "GT_E"
+    },
+    "FINANCEE": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "FINANCEE"
+    },
+    "EHS": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "EHS"
+    },
+    "CRL": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "CRL"
+    },
+    "S_ES": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "S_ES"
+    },
+    "CMOID": {
+     "key": true,
+     "type": "cds.Integer64",
+     "notNull": true,
+     "@Common.Label": "CMOID",
+     "@Common.FieldControl": {
+      "#": "Mandatory"
+     }
+    },
+    "SMSID": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "SMSID"
+    },
+    "COMMENTS": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "COMMENTS"
+    },
+    "VENDOR_SCORE": {
+     "type": "cds.Decimal",
+     "precision": 38,
+     "scale": 19,
+     "@Common.Label": "VENDOR_SCORE"
+    },
+    "VENDOR_STATUS": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "VENDOR_STATUS"
+    },
+    "CMO_NAME": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "CMO_NAME"
+    },
+    "VSOT_FLAG": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "VSOT_FLAG"
+    },
+    "COMPLEXITY_SCORE": {
+     "type": "cds.Decimal",
+     "precision": 38,
+     "scale": 19,
+     "@Common.Label": "COMPLEXITY_SCORE"
+    },
+    "DRIVERS_KEY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "DRIVERS_KEY"
+    },
+    "IMEX_CATEGORY_KEY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "IMEX_CATEGORY_KEY"
+    },
+    "KEY_DRIVER_TEXT": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "KEY_DRIVER_TEXT"
+    },
+    "KEY_DRIVER_WEIGHT": {
+     "type": "cds.Decimal",
+     "precision": 38,
+     "scale": 19,
+     "@Common.Label": "KEY_DRIVER_WEIGHT"
+    },
+    "MATERIAL_KEY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "MATERIAL_KEY"
+    },
+    "TECHNOLOGY_SUB_CATEGORY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "TECHNOLOGY_SUB_CATEGORY"
+    },
+    "MODALITY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "MODALITY"
+    },
+    "PACKAGING": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "PACKAGING"
+    },
+    "TECHNOLOGY_CATEGORY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "TECHNOLOGY_CATEGORY"
+    },
+    "VENDOR_KEY": {
+     "type": "cds.Integer64",
+     "@Common.Label": "VENDOR_KEY"
+    },
+    "SEGREGATION_KEY": {
+     "type": "cds.String",
+     "length": 5000,
+     "@Common.Label": "SEGREGATION_KEY"
+    },
+    "SUPPLIER_KEY": {
+     "type": "cds.Integer64",
+     "@Common.Label": "SUPPLIER_KEY"
+    }
+   },
+   "@Common.Label": "IBMSAP Vendor Information View",
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false
+  },
+  "IBMSAP_Vendor_Information_View_edmx": {
+   "kind": "service",
+   "@cds.external": true
+  }
+ }
+}

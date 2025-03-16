@@ -54,9 +54,37 @@ modules:
       - dwcuidwcui.zip
       name: dwcuidwcui
       target-path: resources/
+    - artifacts:
+      - ibmvendorinfosapathonui.zip
+      name: ibmvendorinfosapathonui
+      target-path: resources/
+    - artifacts:
+      - ibmvendorinfovendorui.zip
+      name: ibmvendorinfovendorui
+      target-path: resources/
 - name: dwcuidwcui
   type: html5
   path: app/dwc-ui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: ibmvendorinfosapathonui
+  type: html5
+  path: app/sapathon-ui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: ibmvendorinfovendorui
+  type: html5
+  path: app/vendor-ui
   build-parameters:
     build-result: dist
     builder: custom

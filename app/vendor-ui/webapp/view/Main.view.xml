@@ -1,0 +1,58 @@
+<mvc:View controllerName="ibm.vendorinfo.vendorui.controller.Main" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+
+	<Table id="idVendorsTable"
+		inset="false"
+		items="{
+			path: 'vendors>/',
+			sorter: {
+				path: 'VENDOR_KEY'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Vendors" level="H2"/>
+					<ToolbarSpacer />
+					<ToggleButton id="toggleInfoToolbar"
+						text="Hide/Show InfoToolbar"
+						press="onToggleInfoToolbar" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Vendor" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Score" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Classification" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="{vendors>VENDOR_KEY}"
+						text="{vendors>VENDOR_STATUS}"/>
+					<Text
+						text="{vendors>VENDOR_SCORE}" />
+					<Text
+						text="{vendors>VSOTCLASSIFICATION}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    <!-- <Page id="page" title="{i18n>title}">
+
+    </Page> -->
+</mvc:View>

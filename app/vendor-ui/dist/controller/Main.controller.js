@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/model/json/JSONModel"],(e,n)=>{"use strict";return e.extend("ibm.vendorinfo.vendorui.controller.Main",{onInit(){this.getOwnerComponent().getModel().metadataLoaded().then(function(){this.fetchVendors()}.bind(this))},fetchVendors:function(){var e=this;var t=this.getOwnerComponent().getModel();t.read("/IBMSAP_Vendor_Information_View",{success:function(t){var o=t.results;e.getView().setModel(new n(o),"vendors")}})}})});
+//# sourceMappingURL=Main.controller.js.map
