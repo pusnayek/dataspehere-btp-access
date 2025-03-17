@@ -29,10 +29,8 @@
     "deploy": "cf deploy mta_archives/dataspehere-api_1.0.0.mtar --retries 1",
     "approuter-local": "cds bind --exec -- npm start --prefix app/router",
     "watch-hybrid": "cds watch --profile hybrid",
-    "watch-dwc-ui": "cds watch --open dwc-ui/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy dataspehere-api --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "watch-sapathon-ui": "cds watch --open sapathon-ui/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-vendor-ui": "cds watch --open vendor-ui/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
@@ -57,7 +55,6 @@
     }
   },
   "sapux": [
-    "app/dwc-ui",
-    "app/sapathon-ui"
+    "app/vendor-ui"
   ]
 }

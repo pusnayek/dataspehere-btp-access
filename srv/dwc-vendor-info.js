@@ -8,8 +8,7 @@ const LOG = cds.log('dwcapi')
 class VendorService extends cds.ApplicationService { init() {
 
   const { IBMSAP_Vendor_Information_View } = this.entities;
-  const datasphereApiConst = {"client_id": "sb-094d8ec8-d752-4086-870d-d30ba01851fd!b28418|client!b655","client_secret":"ad3040e9-db1b-4fef-8ece-7034fd616fa1$lcRb7V6wOGuqNtP7e_stTZfme8HZ365V4VA2tEQWGmY=","auth_refresh_token":"21444b82793e4026a26fbec3c80d58b8-r","hostname":"international-1.us10.hcs.cloud.sap","authhostname":"international-1.authentication.us10.hana.ondemand.com"};  
-  // const datasphereApiConst = JSON.parse(process.env.DATASPHERE_OAUTH_ACCESS);  
+  const datasphereApiConst = JSON.parse(process.env.SAPATHON_OAUTH_ACCESS);  
   const {client_id, client_secret, auth_refresh_token, hostname, authhostname} = datasphereApiConst
 
   let access_token;

@@ -30,6 +30,7 @@ modules:
       name: srv-api
       url: ~{srv-url}
   - name: datasphere-api-access-xsuaa
+  - name: datasphere-repo-runtime
   - name: destination-service
   provides:
   - name: app-api
@@ -51,37 +52,9 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - dwcuidwcui.zip
-      name: dwcuidwcui
-      target-path: resources/
-    - artifacts:
-      - ibmvendorinfosapathonui.zip
-      name: ibmvendorinfosapathonui
-      target-path: resources/
-    - artifacts:
       - ibmvendorinfovendorui.zip
       name: ibmvendorinfovendorui
       target-path: resources/
-- name: dwcuidwcui
-  type: html5
-  path: app/dwc-ui
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: ibmvendorinfosapathonui
-  type: html5
-  path: app/sapathon-ui
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
 - name: ibmvendorinfovendorui
   type: html5
   path: app/vendor-ui
@@ -93,6 +66,12 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
+- name: datasphere-repo-runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: datasphere-repo-runtime
+    service-plan: app-runtime
 - name: datasphere-api-access-xsuaa
   type: org.cloudfoundry.managed-service
   parameters:

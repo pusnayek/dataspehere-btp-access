@@ -1,1 +1,0 @@
-using VendorService as service from '../../srv/dwc-vendor-info';
